@@ -1,1 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dla Ciebie 💖</title>
 
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+overflow:hidden;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+text-align:center;
+}
+
+/* EKRAN LOGOWANIA */
+#login{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+animation:fadeIn 2s;
+}
+
+input{
+padding:12px;
+border-radius:10px;
+border:none;
+font-size:18px;
+}
+
+button{
+margin-top:15px;
+padding:12px 25px;
+border:none;
+border-radius:12px;
+background:white;
+color:#ff4b7d;
+font-size:18px;
+cursor:pointer;
+}
+
+/* GŁÓWNA STRONA */
+#secret{
+display:none;
+padding:20px;
+height:100vh;
+overflow:auto;
+animation:fadeIn 2s;
+}
+
+img{
+width:90%;
+max-width:320px;
+border-radius:20px;
+margin:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+transition:transform .3s;
+}
+
+img:hover{
+transform:scale(1.05);
+}
+
+/* SERDUSZKA */
+.heart{
+position:fixed;
+top:-20px;
+font-size:20px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+<h1>🔒 Tajna wiadomość</h1>
+<p>Tylko dla jednej wyjątkowej osoby...</p>
+<input type="password" id="pass" placeholder="hasło">
+<button onclick="check()">Otwórz 💌</button>
+</div>
+
+<div id="secret">
+<h1>Najlepsza Przyjaciółka ❤️</h1>
+
+<p>
+Dziękuję, że jesteś w moim życiu.<br>
+Ta strona istnieje tylko dla Ciebie ✨
+</p>
+
+<img src="https://drive.google.com/file/d/1Uycn75gvfwWdWRSU6XYzro3_56obRwZp/view?usp=sharing">
+<img src="https://drive.google.com/file/d/1bxT95q2uHCCvIRRsaacCKmm9EgqweObs/view?usp=sharing">
+<img src="https://drive.google.com/file/d/1RfmWY4uPElgKWH5oVg4CsFEq2GW5I4KG/view?usp=sharing">
+
+<h2>Za co Cię kocham:</h2>
+<p>
+💖 zawsze mnie rozumiesz<br>
+💖 mamy najlepsze wspomnienia<br>
+💖 robisz świat lepszym miejscem
+</p>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+</div>
+
+<script>
+function check(){
+let password=document.getElementById("pass").value;
+
+if(password==="bestie"){
+document.getElementById("login").style.display="none";
+document.getElementById("secret").style.display="block";
+startHearts();
+}else{
+alert("Złe hasło 😢");
+}
+}
+
+/* SPADAJĄCE SERDUSZKA */
+function startHearts(){
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+},300);
+}
+</script>
+
+</body>
+</html>
